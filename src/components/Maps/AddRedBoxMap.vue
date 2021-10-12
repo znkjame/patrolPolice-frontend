@@ -74,10 +74,19 @@ export default {
         async addNewRedBox(){
             this.redBoxForm.latitude = this.map.getCenter().lat();
             this.redBoxForm.longitude = this.map.getCenter().lng();
+            if(this.redBoxForm.name !== ""){
             let res = await RedBoxService.createNewRedBox(this.redBoxForm);
             console.log(res);
             if (res.success){
                 this.$swal('Add new Red Box Success', `${this.redBoxForm.name}`, 'success');
+            }
+            }
+            else{
+              this.$swal(
+                    'Add new RedBox',
+                    'Please check that the information you have entered is complete.',
+                    'error',
+                );  
             }
         }
     },
