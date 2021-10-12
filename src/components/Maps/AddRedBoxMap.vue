@@ -1,0 +1,107 @@
+<template>
+  <div>
+    <div>
+        <h3>Map Coordinates:</h3>
+        <p>Latitude :: {{ mapCoordiantes.lat }}  Longitude :: {{ mapCoordiantes.lng }}</p>
+    </div>
+    <div>
+        <GmapMap
+        :center="centerMap.position"
+        :zoom="15"
+        style="width:640px; height:360px"
+        ref="mapRef">
+            <GmapMarker
+            :position="mapCoordiantes">
+            </GmapMarker>
+        </GmapMap>
+    </div>
+    <div>
+        <form action="" @submit.prevent="addNewRedBox">
+            <div>
+                <label for="name">ชื่อของตู้แดง :</label>
+                <input type="text" v-model="redBoxForm.name">
+            </div>
+            <div>
+                <label for="latitude">Latitude : {{ mapCoordiantes.lat }}</label>
+            </div>
+            <div>
+                <label for="longitude">Longitude : {{ mapCoordiantes.lng }}</label>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+  </div>
+</template>
+
+<script>
+import RedBoxService from '../../services/RedBox'
+export default {
+    data() {
+        return {
+            map: null,
+            currentLocation:{
+                label:'currrent',
+                position:{lat:0,lng:0}
+            },
+            centerMap:{
+                position:{lat:0,lng:0}
+            },
+            redBoxForm:{
+                name:"",
+                latitude:0,
+                longitude:0
+            },
+            mapCoordiante:{
+                lat:0,
+                lng:0
+            }
+        }
+    },
+    created(){
+        this.getCurrentLocation()
+    },
+    methods: {
+        getCurrentLocation(){
+            this.$getLocation({}).then(getLocate => {
+                this.currentLocation.position.lat = getLocate.lat;
+                this.currentLocation.position.lng = getLocate.lng;
+                this.centerMap.position = this.currentLocation.position
+                // this.path.push(this.currentLocation)
+                // this.allMarker.push(this.currentLocation)
+                // console.log(this.allMarker);
+            })
+        },
+        async addNewRedBox(){
+            this.redBoxForm.latitude = this.map.getCenter().lat();
+            this.redBoxForm.longitude = this.map.getCenter().lng();
+            let res = await RedBoxService.createNewRedBox(this.redBoxForm);
+            console.log(res);
+            if (res.success){
+                this.$swal('Add new Red Box Success', `${this.redBoxForm.name}`, 'success');
+            }
+        }
+    },
+    mounted(){
+        this.$refs.mapRef.$mapPromise.then(map => this.map = map);
+        this.mapCoordiante = this.mapCoordiantes;
+    },
+    computed:{
+        mapCoordiantes(){
+            if(!this.map){
+                return {
+                    lat:0,
+                    lng:0
+                }
+            }
+            return {
+                lat:this.map.getCenter().lat(),
+                lng:this.map.getCenter().lng()
+            }
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>
