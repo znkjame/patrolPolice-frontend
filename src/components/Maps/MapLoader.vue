@@ -1,9 +1,5 @@
 <template>
   <div>
-    <h2>Current Location</h2>
-    Lati: {{currentLocation.position.lat}} Longi: {{ currentLocation.position.lng }}
-    <button @click="getCurrentLocation()">Reset</button>
-    <button @click="getCurrentLocation()">Go to current location</button>
     <div>
       <table>
         <tr>
@@ -23,6 +19,7 @@
               <GmapMarker 
                 :position="currentLocation.position"
               />
+              <DirectionsRender travelMode="DRIVING" :origin="this.origin" :destination="this.destionation"/>
             </GmapMap>
           </td>
           <td>
@@ -36,7 +33,7 @@
                   <button @click="getLocationInfo(item)" v-if="!isAllRedBox()">Add</button>
                   <button @click=" deteleRedBox(item)" v-if="isAllRedBox()">Delete</button>
                   <div>
-                    <button v-if="!isAllRedBox()">Get Direction</button>
+                    <button @click="setOrigin(item)" v-if="!isAllRedBox()">Get Direction</button>
                   </div>
                   </td>
                 </tr>
@@ -46,6 +43,12 @@
           </td>
         </tr>
       </table>
+    <div>
+    Lati: {{currentLocation.position.lat}} Longi: {{ currentLocation.position.lng }}
+    <button @click="getCurrentLocation()">Reset</button>
+    <button @click="getCurrentLocation()">Go to current location</button>
+    <button @click="removeOrigin()">Remove Directrion</button>
+    </div>
     </div>
   </div>
 </template>
@@ -53,8 +56,12 @@
 <script>
 import RedBoxService from '../../services/RedBox'
 // import AllRedBox from '../../views/Redboxes/AllRedBox.vue'
+import DirectionsRender from '../Maps/DirectionsRender.js'
 export default {
   props: ["RedBoxes"],
+  components: {
+    DirectionsRender
+  },
  data() {
   return {
     currentLocation:{
@@ -83,7 +90,9 @@ export default {
       size: {width: 25, height: 30},
       scaledSize: {width: 25, height: 30},
     },
-    currentView:""
+    currentView:"",
+    origin: null,
+    destionation:null
   }
 },
   watch:{
@@ -160,6 +169,23 @@ export default {
         return true;
       }
       return false;
+    },
+    setOrigin(item){
+      // var orgins = new google.maps.LatLng(this.currentLocation.position.lat,this.currentLocation.position.lng);
+      // console.log(orgins);
+      console.log(item);
+      this.origin = this.currentLocation.position;
+      console.log(this.origin);
+      this.destionation = item.position
+      console.log(this.destionation);
+    },
+    removeOrigin(){
+      this.origin = null;
+      this.destionation = null;
+      console.log(this.origin);
+      console.log(this.destionation);
+      this.$router.go()
+
     }
   }
 }
