@@ -5,18 +5,23 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/assignments">All assignment</router-link> |
       <router-link to="/redboxes/add">add new RedBox</router-link> |
-      <router-link to="/redboxes">All RedBox</router-link>
+      <router-link to="/redboxes">All RedBox</router-link> |
+      <router-link to="/login">Log in</router-link> |
+      <router-link v-if="isAuthen()" to="/logout">Log out</router-link> |
+      <router-link to="/register">Register</router-link> |
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
-
+import AuthUser from '../src/store/AuthUser'
 export default {
-  components: {
-
-  },
+  methods : {
+    isAuthen() {
+      return AuthUser.getters.isAuthen;
+    }
+  }
 };
 </script>
 
