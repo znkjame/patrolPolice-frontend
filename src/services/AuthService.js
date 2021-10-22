@@ -121,6 +121,14 @@ export default {
 		return res.data;
 	},
 
+	async fetchMe(){
+		let url = api_endpoint + "/api/auth/me";
+		let header = this.getApiHeader();
+		let res = await Axios.post(url,"", header);
+		// console.log(res);
+		return res.data;
+	}
+
 
 	// async editInformation({ name, age, gender }, id) {
 	// 	let url = `${api_endpoint}/api/auth/update/${id}`;
