@@ -6,7 +6,8 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import VueGeolocation from 'vue-browser-geolocation';
 import axios from "axios";
 import VueAxios from "vue-axios";
-import VueSwal from 'vue-swal'
+import VueSwal from 'vue-swal';
+import "./assets/tailwind.css";
  
 
 // import 'bootstrap'
