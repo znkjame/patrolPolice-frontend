@@ -40,7 +40,9 @@ export default {
         }
   },
   async created(){
+      console.log("...");
       this.getCurrentUser();
+      console.log("...");
       if (this.isAuthen() === false) {
 			this.$swal(
 				"You are not logged in.",

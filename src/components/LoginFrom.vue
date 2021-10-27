@@ -105,7 +105,7 @@
 									text-2xl
 									p-2
 									w-44
-									bg-navbarColor
+									bg-black
 									text-white
 									hover:bg-gray-800
 									transition

@@ -6,10 +6,13 @@
       <router-link to="/assignments">All assignment</router-link> |
       <router-link to="/redboxes/add">add new RedBox</router-link> |
       <router-link to="/redboxes">All RedBox</router-link> |
-      <router-link to="/login">Log in</router-link> |
+      <router-link v-if="!isAuthen()" to="/login">Log in</router-link> |
       <router-link v-if="isAuthen()" to="/logout">Log out</router-link> |
       <router-link to="/register">Register</router-link> |
       <router-link to="/reports">Make Reports</router-link> |
+      <router-link  v-if="!isAuthen()" to="/register">Register</router-link> |
+      <router-link  v-if="isAuthen()" to="/assignments/admin/add">Add Assignment</router-link> |
+      <router-link  v-if="isAuthen()" to="/assignments/admin/allassignment">Commender Assignment</router-link>
     </div>
     <router-view/>
   </div>

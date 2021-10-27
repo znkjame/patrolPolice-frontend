@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import AssignmentDetail from '../views/Assignments/AssignmentDetail.vue'
+import AssignmentByCommender from '../views/Assignments/AssignmentByCommender.vue'
 import AddNewRedBox from '../views/Redboxes/AddNewRedBox.vue'
 import AllRedBox from '../views/Redboxes/AllRedBox.vue'
 import AllAssignment from '../views/Assignments/AllAssignment.vue'
@@ -10,6 +11,7 @@ import Register from '../views/User/Register.vue'
 import Logout from '../views/User/Logout.vue'
 import Reports from '../views/Reports/Reports.vue'
 import MakeNewReport from '../views/Reports/MakeNewReport.vue'
+import AddAssignment from '../views/Assignments/AddAssignment.vue'
 
 Vue.use(VueRouter)
 
@@ -76,6 +78,20 @@ const routes = [
     name: 'MakeNewReport',
     component: MakeNewReport
   },
+
+  {
+    path: '/assignments/admin/add',
+    name: 'AddAssignment',
+    component: AddAssignment
+  },
+
+  {
+    path: '/assignments/admin/allassignment',
+    name: 'AssignmentByCommender',
+    component: AssignmentByCommender
+  },
+
+  
 ]
 
 const router = new VueRouter({
