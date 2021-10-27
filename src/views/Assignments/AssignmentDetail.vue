@@ -18,10 +18,11 @@
       </h4>
     </div>
     <div>
-      <h4>ถูกมอบหมายเมื่อ : {{ selectedAssignment.created_at }}</h4>
+      <h4>ถูกมอบหมายเมื่อ : {{ selectedAssignment.created_at | moment("DD/MM/YYYY HH:mm:ss")}}</h4>
     </div>
       <map-loader
-      :RedBoxes="AllredBox"></map-loader>
+      :RedBoxes="AllredBox"
+      :Assignment="this.selectedAssignment"></map-loader>
   </div>
 </template>
 
@@ -63,9 +64,9 @@ export default {
       this.redBox.position.lng = this.selectedAssignment.red_box.longitude;
       this.redBox.created_at = this.selectedAssignment.red_box.created_at;
       this.redBox.updated_at = this.selectedAssignment.red_box.updated_at;
-      console.log(this.redBox);
+      // console.log(this.redBox);
       this.AllredBox.push(this.redBox);
-      console.log(this.AllredBox);
+      // console.log(this.AllredBox);
     }
   },
   async created(){
@@ -73,6 +74,7 @@ export default {
     await this.getAssignmentDetail();
     // console.log(this.$route.params.id);
     this.setRedBoxArray();
+    console.log(this.selectedAssignment);
   }
 }
 </script>

@@ -30,7 +30,14 @@
                   <td>
                   <h4>{{ item.name }}</h4>
                   <button @click="getLocationInfo(item)">Go To</button>
-                  <button @click="getLocationInfo(item)" v-if="!isAllRedBox()">Add</button>
+                  <!-- <button @click="getLocationInfo(item)" v-if="!isAllRedBox()">Add</button> -->
+                  <router-link
+                    :to="{
+                      name: 'MakeNewReport',
+                      params: { red_box_id: item.id, assignment_id:id.id },
+                    }"
+                    >Add
+                  </router-link>
                   <button @click=" deteleRedBox(item)" v-if="isAllRedBox()">Delete</button>
                   <div>
                     <button @click="setOrigin(item)" v-if="!isAllRedBox()">Get Direction</button>
@@ -58,7 +65,7 @@ import RedBoxService from '../../services/RedBox'
 // import AllRedBox from '../../views/Redboxes/AllRedBox.vue'
 import DirectionsRender from '../Maps/DirectionsRender.js'
 export default {
-  props: ["RedBoxes"],
+  props: ["RedBoxes","Assignment"],
   components: {
     DirectionsRender
   },
@@ -92,7 +99,8 @@ export default {
     },
     currentView:"",
     origin: null,
-    destionation:null
+    destionation:null,
+    id:""
   }
 },
   watch:{
@@ -104,12 +112,17 @@ export default {
       this.validData();
     },
   },
-  created(){
+  async created(){
+    this.id = this.Assignment
     this.validData();
     // console.log(this.RedBoxes);
     this.getCurrentLocation()
     // console.log(this.$route.name);
     this.getCurrentView();
+    // if(!this.isAllRedBox){
+      
+      console.log(this.id);
+    // }
     // console.log(this.currentView);
   },
  mounted() {
@@ -144,7 +157,7 @@ export default {
       console.log(item);
       swal({
             title: "warning",
-            text: `Would you like to Delete ${name} ?`,
+            text: `Would you like to Delete ${item.name} ?`,
             icon: "warning",
             buttons: true,
             dangerMode: true,
