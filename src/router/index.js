@@ -2,9 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import AssignmentDetail from '../views/Assignments/AssignmentDetail.vue'
+import AssignmentByCommender from '../views/Assignments/AssignmentByCommender.vue'
 import AddNewRedBox from '../views/Redboxes/AddNewRedBox.vue'
 import AllRedBox from '../views/Redboxes/AllRedBox.vue'
 import AllAssignment from '../views/Assignments/AllAssignment.vue'
+import Login from '../views/User/Login.vue'
+import Register from '../views/User/Register.vue'
+import Logout from '../views/User/Logout.vue'
+import AddAssignment from '../views/Assignments/AddAssignment.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +27,25 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
+  
+  {
+		path: "/login",
+		name: "Login",
+		component: Login,
+	},
+
+	{
+		path: "/logout",
+		name: "Logout",
+		component: Logout,
+	},
+
+	{
+		path: "/register",
+		name: "Register",
+		component: Register,
+	},
+  
   {
     path: '/assignments/:id',
     name: 'AssignmentDetail',
@@ -42,6 +66,20 @@ const routes = [
     name: 'AllAssignment',
     component: AllAssignment
   },
+
+  {
+    path: '/assignments/admin/add',
+    name: 'AddAssignment',
+    component: AddAssignment
+  },
+
+  {
+    path: '/assignments/admin/allassignment',
+    name: 'AssignmentByCommender',
+    component: AssignmentByCommender
+  },
+
+  
 ]
 
 const router = new VueRouter({
