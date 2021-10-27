@@ -3,10 +3,10 @@ const api_endpoint = process.env.VUE_APP_SHOP_ENDPOINT || 'http://localhost:8000
 export default {
     async getAllAssignment(){
         let url = `${api_endpoint}/api/assignments`
-        console.log(url);
+        // console.log(url);
         try {
            let res = await Axios.get(url);
-           console.log(res);
+        //    console.log(res);
            if(res.status === 200){
             return {
                 success: true,
@@ -30,10 +30,10 @@ export default {
     },
     async getAssignment(id){
         let url = `${api_endpoint}/api/assignments/${id}`
-        console.log(url);
+        // console.log(url);
         try {
            let res = await Axios.get(url);
-           console.log(res);
+        //    console.log(res);
            if(res.status === 200){
             return {
                 success: true,

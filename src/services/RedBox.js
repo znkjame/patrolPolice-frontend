@@ -4,7 +4,7 @@ const api_endpoint = process.env.VUE_APP_SHOP_ENDPOINT || 'http://localhost:8000
 export default {
     async getAllRedBoxes(){
         let url = `${api_endpoint}/api/redboxes`
-        console.log(url);
+        // console.log(url);
         try {
            let res = await Axios.get(url);
            if(res.status === 200){
@@ -32,7 +32,7 @@ export default {
         try {
             let url = `${api_endpoint}/api/redboxes/`
             let res = await Axios.post(url, data);
-            console.log(res);
+            // console.log(res);
             // let res = await Axios.post(url, data,{
             //     headers: {
             //       'Content-Type': "multipart/form-data" ,

@@ -9,6 +9,7 @@
       <router-link to="/login">Log in</router-link> |
       <router-link v-if="isAuthen()" to="/logout">Log out</router-link> |
       <router-link to="/register">Register</router-link> |
+      <router-link to="/reports">Make Reports</router-link> |
     </div>
     <router-view/>
   </div>

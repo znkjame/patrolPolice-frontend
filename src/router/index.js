@@ -8,6 +8,8 @@ import AllAssignment from '../views/Assignments/AllAssignment.vue'
 import Login from '../views/User/Login.vue'
 import Register from '../views/User/Register.vue'
 import Logout from '../views/User/Logout.vue'
+import Reports from '../views/Reports/Reports.vue'
+import MakeNewReport from '../views/Reports/MakeNewReport.vue'
 
 Vue.use(VueRouter)
 
@@ -63,6 +65,16 @@ const routes = [
     path: '/assignments',
     name: 'AllAssignment',
     component: AllAssignment
+  },
+  {
+    path: '/reports',
+    name: 'AllReport',
+    component: Reports
+  },
+  {
+    path: '/reports/make/:assignment_id/:red_box_id',
+    name: 'MakeNewReport',
+    component: MakeNewReport
   },
 ]
 
