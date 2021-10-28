@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <nav-bar></nav-bar>
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/assignments">All assignment</router-link> |
@@ -13,14 +14,16 @@
       <router-link  v-if="!isAuthen()" to="/register">Register</router-link> |
       <router-link  v-if="isAuthen()" to="/assignments/admin/add">Add Assignment</router-link> |
       <router-link  v-if="isAuthen()" to="/assignments/admin/allassignment">Commender Assignment</router-link>
-    </div>
+    </div> -->
     <router-view/>
   </div>
 </template>
 
 <script>
 import AuthUser from '../src/store/AuthUser'
+import NavBar from './components/NavBar.vue'
 export default {
+  components: { NavBar },
   methods : {
     isAuthen() {
       return AuthUser.getters.isAuthen;

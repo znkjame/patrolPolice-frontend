@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="grid justify-items-center mt-10">
+    <div>
+      <h5 class="text-5xl">รายการงานที่ถูกมอบหมาย</h5>
+    </div>
       <assignment-item
       :assignments="allAssignment">
       </assignment-item>
