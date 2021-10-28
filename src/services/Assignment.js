@@ -120,5 +120,32 @@ export default {
                 }
         }
     },
+    async updateStatus(status , id){
+        console.log(status);
+        let url = `${api_endpoint}/api/assignments/update/${id}`
+        try {
+            let res = await Axios.put(url, { status: status ,});
+            console.log("res" ,res);
+            if(res.status === 200){
+             return {
+                 success: true,
+                 assignments: res.data,
+             }
+             }
+         } catch (e) {
+             console.log(e);
+             let error = ""
+                 for (let items in e.response.data.errors)
+                 {
+                     // console.log(`${e.response.data.errors[items]}`);
+                     error = error  +`${e.response.data.errors[items]}` + "\n";
+                 }
+                 // console.log(error);
+                 return {
+                     success: false,
+                     message: error
+                 }
+         }
+    }
 
 }
