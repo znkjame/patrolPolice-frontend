@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-10 grid justify-items-center">
     <div>
       <table>
         <tr>
@@ -23,24 +23,36 @@
             </GmapMap>
           </td>
           <td>
-            <div>
-            <table>
+            <h4 class="text-xl">รายชื่อตู้แดง</h4>
+            <div class="overflow-y-auto" style="height:360px">
+            <table class="" >
               <tbody>
-                <tr v-for="(item,index) in allMarker" :key="index">
-                  <td>
-                  <h4>{{ item.name }}</h4>
-                  <button @click="getLocationInfo(item)">Go To</button>
-                  <!-- <button @click="getLocationInfo(item)" v-if="!isAllRedBox()">Add</button> -->
-                  <router-link
-                    :to="{
-                      name: 'MakeNewReport',
-                      params: { red_box_id: item.id, assignment_id:id.id },
-                    }"
+                <tr v-for="(item,index) in allMarker" :key="index" class="pt-10 pl-5">
+                  <td class="px-4 py-3 p-5">
+                  <h4 class="text-xl">{{ item.name }}</h4>
+                  <div class="pt-1">
+                    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300" @click="getLocationInfo(item)">Go To</button>
+                    <!-- <button @click="getLocationInfo(item)" v-if="!isAllRedBox()">Add</button> -->
+                    <!-- <router-link  
+                      class=" p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300"
+                      v-if="!isAllRedBox()"
+                      :to="{
+                        name: 'MakeNewReport',
+                        params: { red_box_id: item.id, assignment_id:id.id },
+                      }"
                     >Add
-                  </router-link>
-                  <button @click=" deteleRedBox(item)" v-if="isAllRedBox()">Delete</button>
-                  <div>
-                    <button @click="setOrigin(item)" v-if="!isAllRedBox()">Get Direction</button>
+                    </router-link> -->
+                    <button 
+                      class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300" 
+                      @click="goToAddReport(item)"
+                      v-if="!isAllRedBox()"
+                    >
+                      Add
+                    </button>
+                    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300" @click=" deteleRedBox(item)" v-if="isAllRedBox()">Delete</button>
+                  </div>
+                  <div class="p-1">
+                    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300" @click="setOrigin(item)" v-if="!isAllRedBox()">Get Direction</button>
                   </div>
                   </td>
                 </tr>
@@ -50,11 +62,12 @@
           </td>
         </tr>
       </table>
-    <div>
-    Lati: {{currentLocation.position.lat}} Longi: {{ currentLocation.position.lng }}
-    <button @click="getCurrentLocation()">Reset</button>
-    <button @click="getCurrentLocation()">Go to current location</button>
-    <button @click="removeOrigin()">Remove Directrion</button>
+    <div class="mt-2">
+    <!-- Lati: {{currentLocation.position.lat}} Longi: {{ currentLocation.position.lng }} -->
+    Maps Menu :
+    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" @click="getCurrentLocation()">Reset</button>
+    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" @click="getCurrentLocation()">Go to current location</button>
+    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" v-if="!isAllRedBox()" @click="removeOrigin()">Remove Directrion</button>
     </div>
     </div>
   </div>
@@ -199,6 +212,9 @@ export default {
       console.log(this.destionation);
       this.$router.go()
 
+    },
+    goToAddReport(item){
+      this.$router.push({name: 'MakeNewReport',params: { red_box_id: item.id, assignment_id:this.id.id }})
     }
   }
 }

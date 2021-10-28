@@ -1,32 +1,34 @@
 <template>
   <div>
-      <table>
+      <table class="w-full mt-10">
           <thead>
-              <th></th>
-              <th>
-                  Detail
-              </th>
-              <th>
-                  Assigned By
-              </th>
-              <th>
-                  RedBox
-              </th>
-              <th>
-                  Status
-              </th>
-              <th>
-                  Created At
-              </th>
+              <tr class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                <th class="px-4 py-3"></th>
+                <th class="px-4 py-3">
+                    Detail
+                </th>
+                <th class="px-4 py-3">
+                    Assigned By
+                </th>
+                <th class="px-4 py-3">
+                    RedBox
+                </th>
+                <th class="px-4 py-3">
+                    Status
+                </th>
+                <th class="px-4 py-3">
+                    Created At
+                </th>
+              </tr>
           </thead>
           <tbody>
-              <tr v-for="(assignment,index) in allAssignments" :key="index">
-                  <td>{{ index+1 }}</td>
-                  <td> <router-link :to="{name :'AssignmentDetail', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td>
-                  <td> {{ assignment.commander_name }}</td>
-                  <td>{{ assignment.red_box_name }}</td>
-                  <td>{{ assignment.status }}</td>
-                  <td>{{ assignment.created_at }}</td>
+              <tr v-for="(assignment,index) in allAssignments" :key="index" class="text-gray-700">
+                  <td class="px-4 py-3 text-ms font-semibold border">{{ index+1 }}</td>
+                  <td class="px-4 py-3 text-ms font-semibold border"> <router-link :to="{name :'AssignmentDetail', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td>
+                  <td class="px-4 py-3 text-ms font-semibold border"> {{ assignment.commander_name }}</td>
+                  <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.red_box_name }}</td>
+                  <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.status }}</td>
+                  <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.created_at | moment("DD-MMM-YYYY HH:mm:ss")}}  </td>
               </tr>
           </tbody>
       </table>
