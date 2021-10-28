@@ -124,6 +124,7 @@
 
 <script>
 // import ShopStore from '@/store/Shop'
+import AuthService from '../services/AuthService'
 import AuthUser from '../store/AuthUser';
 export default {
 	data() {
@@ -133,6 +134,7 @@ export default {
 				email: "",
 				password: "",
 			},
+			policeInfo:""
 		};
 	},
 	methods: {
@@ -140,17 +142,23 @@ export default {
 			let res = await AuthUser.dispatch("login", this.loginFrom);
 			console.log(res);
 			if (res.success) {
+				let res1 = await AuthService.fetchUser(res.user.id);
 				this.$swal(
 					"Login Success",
-					`Welcome, ${res.user.name}`,
+					`Welcome, ${res1.rank} ${res1.firstname} ${res1.lastname} `,
 					"success"
 				);
 				this.currentUser = res.user;
 				this.$router.push("/");
+				//this.$router.go(this.$router.currentRoute)
 			} else {
 				this.$swal("Login Failed", res.error, "error");
 			}
 		},
+		// async fetchUser(){
+      	// 	let res = await AuthService.fetchUser(this.currentUser.user.id);
+      	// 	this.policeInfo = res;
+    	// },
 		clearFrom() {
 			this.loginFrom.email = "";
 			this.loginFrom.password = "";
@@ -159,6 +167,9 @@ export default {
 			this.$router.push("/register");
 		},
 	},
+	// created() {
+	// 	this.fetchUser();
+	// },
 };
 </script>
 
