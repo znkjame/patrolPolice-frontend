@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="grid justify-items-center mt-10">
     <div>
       <h1>รายละเอียดของงานที่ {{ selectedAssignment.id }}</h1>
     </div>

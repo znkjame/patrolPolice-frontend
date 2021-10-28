@@ -1,34 +1,44 @@
 <template>
-  <div>
-    <div>
+  <div class="mt-10 grid justify-items-center">
+    <!-- <div>
         <h3>Map Coordinates:</h3>
         <p>Latitude :: {{ mapCoordiantes.lat }}  Longitude :: {{ mapCoordiantes.lng }}</p>
-    </div>
-    <div>
-        <GmapMap
-        :center="centerMap.position"
-        :zoom="15"
-        style="width:640px; height:360px"
-        ref="mapRef">
-            <GmapMarker
-            :position="mapCoordiantes">
-            </GmapMarker>
-        </GmapMap>
-    </div>
-    <div>
-        <form action="" @submit.prevent="addNewRedBox">
-            <div>
-                <label for="name">ชื่อของตู้แดง :</label>
-                <input type="text" v-model="redBoxForm.name">
-            </div>
-            <div>
-                <label for="latitude">Latitude : {{ mapCoordiantes.lat }}</label>
-            </div>
-            <div>
-                <label for="longitude">Longitude : {{ mapCoordiantes.lng }}</label>
-            </div>
-            <button>Submit</button>
-        </form>
+    </div> -->
+    <div class="flex flex-row object-center">
+        <div>
+            <GmapMap
+            :center="centerMap.position"
+            :zoom="15"
+            style="width:640px; height:360px"
+            ref="mapRef">
+                <GmapMarker
+                :position="mapCoordiantes">
+                </GmapMarker>
+            </GmapMap>
+        </div>
+        <div class="object-center">
+            <form action="" @submit.prevent="addNewRedBox">
+                <div class="mt-20 ml-10">
+                    <label for="name">ชื่อของตู้แดง :</label>
+                    <input 
+                    placeholder="ชื่อของตู้แดง"
+                    class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    type="text" v-model="redBoxForm.name">
+                </div>
+                <div class="mt-5">
+                    <h1>ตำแหน่งของหมุดปัจจุบัน</h1>
+                </div>
+                <div>
+                    <label for="latitude">Latitude : {{ mapCoordiantes.lat }}</label>
+                </div>
+                <div>
+                    <label for="longitude">Longitude : {{ mapCoordiantes.lng }}</label>
+                </div>
+                <div class="mt-5">
+                    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
   </div>
 </template>

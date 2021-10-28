@@ -1,8 +1,8 @@
 <template>
-	<div class="bg-bgColor main-container min-h-screen">
+	<div class="bg-white main-container min-h-screen">
 		<div class="font-prompt">
 			<div class="mt-48">
-				<div class="text-center py-4 text-white">
+				<div class="text-center py-4 text-green-600">
 					<h2 class="text-7xl">Log in</h2>
 				</div>
 				<div class="flex justify-center">
@@ -14,7 +14,7 @@
 										block
 										uppercase
 										tracking-wide
-										text-white text-xl
+										text-green-600 text-xl
 										mb-2
 									"
 								>
@@ -48,7 +48,7 @@
 										block
 										uppercase
 										tracking-wide
-										text-white text-xl
+										text-green-600 text-xl
 										mb-2
 									"
 								>
@@ -81,7 +81,7 @@
 								lg:flex
 								text-base
 								lg:text-lg
-								text-white
+								text-green-600
 								float-right
 								-mt-3
 								cursor-default

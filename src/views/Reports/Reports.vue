@@ -1,23 +1,25 @@
 <template>
-    <div>
+    <div class="grid justify-items-center mt-10">
         <div>
             <h5 class="text-5xl">การสร้างรายงาน</h5>
         </div>
-        <div>
-            <label for="">ประเภทของรายงาน :</label>
-            <select name="" id="" v-model="reportType">
-                <option value="">กรุณาเลือกประเภท</option>
-                <option value="Redbox">ตามตู้แดง</option>
-                <option value="Assignment">ตามงานที่ถูกมอบหมาย</option>
-            </select>
-        </div>
-        <div>
-            <label for="">เดือนปีที่ต้องการ :</label>
-            <input type="month" v-model="selectedMonth">
-        </div>
-        <div>
-            <button @click="showTable()">submit</button>
-            <button @click="reset()">Reset</button>
+        <div class="m-5">
+            <div class="">
+                <label for="">ประเภทของรายงาน :</label>
+                <select class="m-3 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" name="" id="" v-model="reportType">
+                    <option value="">กรุณาเลือกประเภท</option>
+                    <option value="Redbox">ตามตู้แดง</option>
+                    <option value="Assignment">ตามงานที่ถูกมอบหมาย</option>
+                </select>
+            </div>
+            <div class="m-3">
+                <label for="">เดือนปีที่ต้องการ :</label>
+                <input type="month" v-model="selectedMonth" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200">
+            </div>
+            <div>
+                <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300" @click="showTable()">Submit</button>
+                <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300" @click="reset()">Reset</button>
+            </div>
         </div>
         <redbox-report-table v-if="this.isRedBox"
         :RedBoxes="this.filterRedBox"
