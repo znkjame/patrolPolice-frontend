@@ -121,11 +121,11 @@ export default {
 		// let url = `${api_endpoint}/api/auth/logout`;
 	},
 
-	async fetchUser({ id }) {
-		let url = api_endpoint + "/users/" + id;
+	async fetchUser( id ) {
+		let url = api_endpoint + "/api/polices/" + id;
 		let header = this.getApiHeader();
 		let res = await Axios.get(url, header);
-		return res.data;
+		return res.data.data;
 	},
 
 	async fetchMe(){

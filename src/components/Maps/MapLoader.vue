@@ -30,7 +30,7 @@
                 <tr v-for="(item,index) in allMarker" :key="index" class="pt-10 pl-5">
                   <td class="px-4 py-3 p-5">
                   <h4 class="text-xl">{{ item.name }}</h4>
-                  <div class="pt-1">
+                  <div class="pt-1 space-x-2 ">
                     <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300" @click="getLocationInfo(item)">Go To</button>
                     <!-- <button @click="getLocationInfo(item)" v-if="!isAllRedBox()">Add</button> -->
                     <!-- <router-link  
@@ -51,7 +51,7 @@
                     </button>
                     <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300" @click=" deteleRedBox(item)" v-if="isAllRedBox()">Delete</button>
                   </div>
-                  <div class="p-1">
+                  <div class="p-1 mt-1">
                     <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300" @click="setOrigin(item)" v-if="!isAllRedBox()">Get Direction</button>
                   </div>
                   </td>
@@ -64,10 +64,13 @@
       </table>
     <div class="mt-2">
     <!-- Lati: {{currentLocation.position.lat}} Longi: {{ currentLocation.position.lng }} -->
-    Maps Menu :
-    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" @click="getCurrentLocation()">Reset</button>
-    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" @click="getCurrentLocation()">Go to current location</button>
-    <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" v-if="!isAllRedBox()" @click="removeOrigin()">Remove Directrion</button>
+    <span class="space-x-3">
+        <span>Maps Menu : </span>
+        <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" @click="getCurrentLocation()">Reset</button>
+        <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" @click="getCurrentLocation()">Go to current location</button>
+        <button class="p-2 pl-5 pr-5 bg-transparent border-2 border-gray-500 text-gray-500 text-lg rounded-lg hover:bg-gray-500 hover:text-gray-100 focus:border-4 focus:border-gray-300" v-if="!isAllRedBox()" @click="removeOrigin()">Remove Directrion</button>
+    </span>
+
     </div>
     </div>
   </div>

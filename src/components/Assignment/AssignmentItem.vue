@@ -22,9 +22,13 @@
               </tr>
           </thead>
           <tbody>
-              <tr v-for="(assignment,index) in allAssignments" :key="index" class="text-gray-700">
+              <tr v-for="(assignment,index) in allAssignments" :key="index" class="text-gray-500">
                   <td class="px-4 py-3 text-ms font-semibold border">{{ index+1 }}</td>
-                  <td class="px-4 py-3 text-ms font-semibold border"> <router-link :to="{name :'AssignmentDetail', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td>
+                  <td 
+                  class="px-4 py-3 text-ms font-semibold
+                  border text-black hover:bg-green-500 hover:text-white focus:border-4 focus:border-green-300"> 
+                  <router-link :to="{name :'AssignmentDetail', params:{id: assignment.id}}">
+                      {{ assignment.detail }}</router-link></td>
                   <td class="px-4 py-3 text-ms font-semibold border"> {{ assignment.commander_name }}</td>
                   <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.red_box_name }}</td>
                   <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.status }}</td>
