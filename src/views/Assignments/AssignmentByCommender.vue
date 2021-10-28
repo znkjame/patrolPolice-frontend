@@ -26,7 +26,7 @@
                 <tr v-for="(assignment,index) in allAssignments" :key="index" >
                     <td>{{ index+1 }}</td>
                     <!-- <td> <router-link :to="{name :'AssignmentDetail', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td> -->
-                    <td class="p-2">{{assignment.detail}}</td>
+                    <td class="p-2" > <router-link :to="{name :'AssignmentByCommenderID', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td>
                     <td class="p-2">{{ assignment.patrol_name }}</td>
                     <td class="p-2">{{ assignment.red_box_name }}</td>
                     <td class="p-2">{{ assignment.status }}</td>

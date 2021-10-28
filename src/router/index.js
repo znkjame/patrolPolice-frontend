@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import AssignmentDetail from '../views/Assignments/AssignmentDetail.vue'
+import AssignmentByCommenderID from '../views/Assignments/AssignmentReport.vue'
 import AssignmentByCommender from '../views/Assignments/AssignmentByCommender.vue'
 import AddNewRedBox from '../views/Redboxes/AddNewRedBox.vue'
 import AllRedBox from '../views/Redboxes/AllRedBox.vue'
@@ -86,9 +87,15 @@ const routes = [
   },
 
   {
-    path: '/assignments/admin/allassignment',
+    path: '/assignments/admin/allassignment/',
     name: 'AssignmentByCommender',
     component: AssignmentByCommender
+  },
+
+  {
+    path: '/assignments/admin/allassignment/:id',
+    name: 'AssignmentByCommenderID',
+    component: AssignmentByCommenderID
   },
 
   
