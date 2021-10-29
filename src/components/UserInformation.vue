@@ -1,10 +1,10 @@
 <template>
     <div class="mt-10">
         <button
-			@click="goToEdit()"
+		  	@click="goToEdit()"
 				class="
 					p-3
-					text-2xl
+					text-xl
 					absolute
 					right-24
 					cursor-pointer
@@ -17,10 +17,12 @@
 					duration-250
 					"
 				>
-				<font-awesome-icon :icon="['fas', 'edit']" />
 				    แก้ไขข้อมูล
-			</button>
-        <div class="mt-3">
+			  </button>
+        <div class="text-4xl font-bold">
+          ข้อมูลส่วนตัว
+        </div>
+        <div class="mt-5">
             <label>ตำแหน่ง : 
             {{ this.policeInfo.rank}}
             </label>
@@ -79,7 +81,7 @@ export default {
 	},
   },
   created() {
-		this.fetchCurrentUser();
+		    this.fetchCurrentUser();
         this.fetchUser();
 	},
 }

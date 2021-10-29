@@ -134,21 +134,22 @@ export default {
 		let res = await Axios.post(url,"", header);
 		// console.log(res);
 		return res.data;
-	}
+	},
 
 
-	// async editInformation({ name, age, gender }, id) {
-	// 	let url = `${api_endpoint}/api/auth/update/${id}`;
-	// 	console.log(url)
-	// 	let body = {
-	// 		name: name,
-	// 		age: age,
-	// 		gender: gender,
-	// 	};
-	// 	let header = this.getApiHeader();
-	// 	let res = await Axios.put(url, body, header);
-	// 	return res;
-	// },
+	 async editInformation({ firstname, lastname, rank, phone }, id) {
+	 	let url = `${api_endpoint}/api/polices/${id}`;
+	 	console.log(url)
+	 	let body = {
+	 		firstname: firstname,
+	 		lastname: lastname,
+	 		rank: rank,
+			phone: phone
+	 	};
+	 	let header = this.getApiHeader();
+	 	let res = await Axios.put(url, body, header);
+	 	return res;
+	 },
 };
 
 // export const

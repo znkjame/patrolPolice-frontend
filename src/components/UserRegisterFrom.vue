@@ -1,25 +1,30 @@
 <template>
-<div>
-	<h2>Register</h2>
-		<div>
-			<label>First Name</label>
-			<input type="text" v-model="policeForm.firstName" autocomplete="off" placeholder="First Name">
+<div class="mt-5">
+	<h2 class="text-4xl mt-5 font-bold">สร้างบัญชี</h2>
+		<div class="mt-5">
+			<label>ชื่อ</label>
+			<input class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+			 type="text" v-model="policeForm.firstName" autocomplete="off" placeholder="ชื่อ">
 		</div>
 
-		<div>
-			<label>Last Name</label>
-			<input type="text" v-model="policeForm.lastName" autocomplete="off" placeholder="Last Name">
+		<div class="mt-3">
+			<label>นามสกุล</label>
+			<input class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+			 type="text" v-model="policeForm.lastName" autocomplete="off" placeholder="นามสกุล">
 		</div>
 
-		<div>
-			<label>phone</label>
-			<input type="text" v-model="policeForm.phone" autocomplete="off" placeholder="phone">
+		<div class="mt-3">
+			<label>รหัสประจำตัว</label>
+			<input class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+			 type="text" v-model="policeForm.phone" autocomplete="off" placeholder="รหัสประจำตัว">
 		</div>
 
-		<div>
-			<label>rank</label>
-			<select v-model="policeForm.rank">
-  				<option disabled value="">Select your rank</option>
+		<div class="mt-3">
+			<label>ยศ</label>
+			<select
+			class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+			v-model="policeForm.rank">
+  				<option disabled value="">เลือกยศของคุณ</option>
   				<option>General</option>
   				<option>Lieutenant General</option>
   				<option>Major General</option>
@@ -38,25 +43,30 @@
 			</select>
 		</div>
 
-		<div>
-			<label>Email</label>
-			<input type="text" v-model="registerForm.email" autocomplete="off" placeholder="Email">
+		<div class="mt-3">
+			<label>อีเมล</label>
+			<input class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" 
+			type="text" v-model="registerForm.email" autocomplete="off" placeholder="อีเมล">
 		</div>
 
-		<div>
-			<label>Password</label>
-			<input type="password" v-model="registerForm.password" autocomplete="off" placeholder="Password">
+		<div class="mt-3">
+			<label>รหัสผ่าน</label>
+			<input class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" 
+			type="password" v-model="registerForm.password" autocomplete="off" placeholder="รหัสผ่าน">
 		</div>
 
-		<div>
-			<label>Confirm Password</label>
-			<input type="password" v-model="confirm_password" autocomplete="off" placeholder="Confirm Password">
+		<div class="mt-3">
+			<label>ยืนยันรหัสผ่าน</label>
+			<input class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" 
+			type="password" v-model="confirm_password" autocomplete="off" placeholder="ยืนยันรหัสผ่าน">
 		</div>
 
-		<div>
+		<div class="mt-10">
 			<button
+			class="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 rounded-lg 
+          	hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300"
 			@click="register( registerForm, policeForm)">
-				register
+				สร้างบัญชี
 			</button>
 		</div>
 
