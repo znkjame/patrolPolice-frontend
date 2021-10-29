@@ -13,6 +13,7 @@
 
 <script>
 import ReportService from '../../services/Report'
+import AssignmentService from '../../services/Assignment'
 export default {
     data(){
         return {
@@ -28,14 +29,24 @@ export default {
           this.reportForm.assignment_id = this.$route.params.assignment_id;
           this.reportForm.red_box_id = this.$route.params.red_box_id;
           console.log(this.reportForm)
-          let res = await ReportService.addReport(this.reportForm)
+          if (this.reportForm.note !== "")
+          {
+                this.$swal(
+				    "Reported Success",
+					`${this.reportForm.note}`,
+					"success"
+				);
+                let res = await ReportService.addReport(this.reportForm)
+                let res2 = await AssignmentService.updateStatus("Reported",this.reportForm.assignment_id)
+                this.$router.push("/assignments")
+          }
+          else{
+              this.$swal("Reported Failed","Please fill up the note" ,"error");
+          }
+          
         },
     },
 
-    created(){
-        this.assignment_id = this.$route.params.assignment_id;
-        this.red_box_id = this.$route.params.red_box_id;
-    }
 }
 </script>
 
