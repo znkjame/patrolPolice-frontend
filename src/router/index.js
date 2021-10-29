@@ -10,6 +10,8 @@ import AllAssignment from '../views/Assignments/AllAssignment.vue'
 import Login from '../views/User/Login.vue'
 import Register from '../views/User/Register.vue'
 import Logout from '../views/User/Logout.vue'
+import UserInfo from '../views/User/UserInfo.vue'
+import EditInfo from '../views/User/EditInfo.vue'
 import Reports from '../views/Reports/Reports.vue'
 import MakeNewReport from '../views/Reports/MakeNewReport.vue'
 import AddAssignment from '../views/Assignments/AddAssignment.vue'
@@ -97,6 +99,18 @@ const routes = [
     name: 'AssignmentByCommenderID',
     component: AssignmentByCommenderID
   },
+
+  {
+		path: "/user-information",
+		name: "UserInfo",
+		component: UserInfo,
+	},
+
+  {
+		path: "/edit-information",
+		name: "EditInfo",
+		component: EditInfo,
+	},
 
   
 ]

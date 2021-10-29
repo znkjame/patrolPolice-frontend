@@ -31,7 +31,8 @@
       </router-link>
     </div>
     <div class="space-x-2 ">
-      <span class="text-lg text-white" v-if="isAuthen()" >{{ this.policeInfo.rank}} {{ this.policeInfo.firstname}} {{this.policeInfo.lastname}} </span>
+      <router-link v-if="isAuthen()" to="/user-information"
+      class="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4 text-lg flex-1 flex justify-center mr-auto" >{{ this.policeInfo.rank}} {{ this.policeInfo.firstname}} {{this.policeInfo.lastname}} </router-link>
       <router-link v-if="!isAuthen()" to="/login" 
       class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent 
       hover:text-green-600 hover:bg-white mt-4 lg:mt-0">Login</router-link>
