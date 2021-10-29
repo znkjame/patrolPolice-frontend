@@ -13,9 +13,7 @@
             <h4>สถานะปัจจุบันของงาน : {{ Assignments.status }}</h4>
         </div>
         <div class="m-2">
-            <h4>ถูกมอบหมายโดย : {{ Assignments.commander.rank }} {{ Assignments.commander.firstname }}
-                {{ Assignments.commander.lastname }}
-            </h4>
+            <h4>มอบหมายให้ : {{ Assignments.patrol_name}} </h4>
         </div>
         <div>
             <h1 class="text-3xl font-semibold m-4">Report</h1>

@@ -61,7 +61,7 @@ export default {
         },
         addAssign(nameAndIDPatrol , nameAndIDRedBox , detail , time ,commanderCurrentId){
             // console.log("is name Patrol" ,nameAndIDPatrol);
-            // console.log("is id Patrol" ,nameAndIDPatrol[0]);
+            // console.log("is id Patrol" ,(nameAndIDPatrol[0] + nameAndIDPatrol[1]).trim());
             // console.log("is name RedBox" ,nameAndIDRedBox);
             // console.log("is id RedBox" ,nameAndIDRedBox[0]);
             // console.log("is id detail" ,detail);

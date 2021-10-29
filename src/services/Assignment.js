@@ -63,8 +63,8 @@ export default {
             detail: detail ,
             time: time ,
             commander_id : commanderCurrentId ,
-            patrol_id : nameAndIDPatrol[0] ,
-            red_box_id : nameAndIDRedBox[0] ,
+            patrol_id : (nameAndIDPatrol[0] + nameAndIDPatrol[1]).trim() ,
+            red_box_id : (nameAndIDRedBox[0] + nameAndIDRedBox[1]).trim() ,
             status : "NEW"
 
         }
