@@ -1,11 +1,13 @@
 <template>
   <div>
       <div >
-          <span>
-              รายละเอียด
-              <input type="text" v-model="detail" placeholder="รายละเอียด" class="bg-gray-100"> 
+          <div class="text-2xl">
+              <div class="m-10">
+                  รายละเอียด
+              <textarea v-model="detail" placeholder="รายละเอียด" class="bg-gray-100 " rows="4" cols="50"> </textarea>
+              </div> 
               เวลา
-              <input type="time" v-model="time" placeholder="รายละเอียด" class="bg-gray-100"> 
+              <input type="time" v-model="time" placeholder="รายละเอียด" class="bg-gray-100 mt-10 mr-10"> 
                 <select name="" id="" v-model="nameAndIDRedBox" class="mr-16" >
                     <option disabled value="" >Select RedBox</option>
                     <option v-for="(box , index) in allRedBox" :key="index">
@@ -19,7 +21,7 @@
                     </option>
                 </select>
             <button class="ml-3" @click="addAssign(nameAndIDPatrol , nameAndIDRedBox , detail , time ,commanderCurrent.user.id)"> ยืนยัน</button>
-          </span>
+          </div>
           
       </div>
       

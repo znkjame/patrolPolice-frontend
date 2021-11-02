@@ -1,36 +1,37 @@
 <template>
     <div class="grid justify-items-center ">
-        <div class="mb-4 text-2xl">
+        <div class=" text-3xl font-semibold m-4">
           Assignment
         </div>   
         <table>
-            <thead>
+            <thead class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                 <th></th>
-                <th>
+                <th class="px-4 py-3">
                     Detail
                 </th>
-                <th>
+                <th class="px-4 py-3">
                     Assigned to
-                </th>
-                <th>
+                </th >
+                <th class="px-4 py-3">
                     RedBox
                 </th>
-                <th>
+                <th class="px-4 py-3">
                     Status
                 </th>
-                <th>
+                <th class="px-4 py-3">
                     Created At
                 </th>
             </thead>
             <tbody >
                 <tr v-for="(assignment,index) in allAssignments" :key="index" >
-                    <td>{{ index+1 }}</td>
+                    <td class="px-4 py-3 text-ms font-semibold border">{{ index+1 }}</td>
                     <!-- <td> <router-link :to="{name :'AssignmentDetail', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td> -->
-                    <td class="p-2" > <router-link :to="{name :'AssignmentByCommenderID', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td>
-                    <td class="p-2">{{ assignment.patrol_name }}</td>
-                    <td class="p-2">{{ assignment.red_box_name }}</td>
-                    <td class="p-2">{{ assignment.status }}</td>
-                    <td class="p-2">{{ assignment.created_at }}</td>
+                    <td class="px-4 py-3 text-ms font-semibold
+                  border text-black hover:bg-green-500 hover:text-white focus:border-4 focus:border-green-300 p-2" > <router-link :to="{name :'AssignmentByCommenderID', params:{id: assignment.id}}">{{ assignment.detail }}</router-link></td>
+                    <td class="px-4 py-3 text-ms font-semibold border ">{{ assignment.patrol_name }}</td>
+                    <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.red_box_name }}</td>
+                    <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.status }}</td>
+                    <td class="px-4 py-3 text-ms font-semibold border">{{ assignment.created_at | moment("DD/MM/YYYY HH:mm:ss")}}</td>
                 </tr>
             </tbody>
         </table>
