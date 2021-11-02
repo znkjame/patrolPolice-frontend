@@ -59,13 +59,17 @@ export default {
 				console.log("NOT 200", res);
 			}
 		} catch (e) {
-			console.error(e);
-			if (e.response.status === 400) {
+			if (e.response.status === 401) {
 				// console.log(e.response.data.message[0].messages[0].message);
 				return {
 					success: false,
-					message: e.response.data.message[0].messages[0].message,
+					status: 401
 				};
+			} else if (e.response.status === 422) {
+				return {
+					success: false,
+					status: 422
+				}
 			}
 		}
 	},
