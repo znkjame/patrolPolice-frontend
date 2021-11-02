@@ -59,9 +59,7 @@ export default {
   },
   methods : {
     async fetchCurrentUser() {
-			this.currentUser = JSON.parse(
-				JSON.stringify(AuthUser.getters.getCurrentUser)
-			);
+			this.currentUser = AuthUser.getters.getCurrentUser;
 			console.log("CurrentUser", this.currentUser);
       console.log("ThisisID", this.currentUser.user.id);
 		},
