@@ -139,20 +139,31 @@ export default {
 	},
 	methods: {
 		async login() {
-			let res = await AuthUser.dispatch("login", this.loginFrom);
-			console.log(res);
-			if (res.success) {
-				let res1 = await AuthService.fetchUser(res.user.id);
-				this.$swal(
-					"Login Success",
-					`Welcome, ${res1.rank} ${res1.firstname} ${res1.lastname} `,
-					"success"
-				);
-				this.currentUser = res.user;
-				this.$router.push("/");
-				//this.$router.go(this.$router.currentRoute)
+			if (this.loginFrom.email !== "" && this.loginFrom.password !== "")
+			{
+				let res = await AuthUser.dispatch("login", this.loginFrom);
+				console.log(res.success);
+				console.log(res.status)
+				if (res.success) {
+					let res1 = await AuthService.fetchUser(res.user.id);
+					this.$swal(
+						"Login Success",
+						`Welcome, ${res1.rank} ${res1.firstname} ${res1.lastname} `,
+						"success"
+					);
+					this.currentUser = res.user;
+					this.$router.push("/");
+				} else if (!res.success && res.status === 401){
+					this.$swal("Login Failed", "Invalid username or password.", "error");
+				} else if (!res.success && res.status === 422){
+					this.$swal("Login Failed", "The email must be a valid email address. \nThe password must be at least 6 characters.", "error");
+				}
 			} else {
-				this.$swal("Login Failed", res.error, "error");
+				this.$swal(
+					"Login Failed",
+					"please enter you email or password",
+					"error"
+				);
 			}
 		},
 		// async fetchUser(){
